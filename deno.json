@@ -1,0 +1,10 @@
+{
+  "fmt": {
+    "semiColons": false,
+    "singleQuote": true
+  },
+  "name": "@leaf/e-hentai",
+  "version": "2024.12.14",
+  "exports": "./lib/index.ts",
+  "license": "GPL-3.0"
+}
