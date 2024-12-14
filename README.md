@@ -46,8 +46,8 @@ await search({
 - `MacOS` users please install `Chrome` browser in advance, `Windows` users please specify `chromePath` manually (you can use the built-in `Edge` browser).
 
 ```json
-// 示例结果
-// Example result
+// 示例结果 (result_1.json)
+// Example result (result_1.json)
 [
   {
     "title": "【佐藤ていぎ】異世界転生系即落ちシリーズ｜【男男菊花香个人汉化】【chinese】",
