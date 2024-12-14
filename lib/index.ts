@@ -3,6 +3,21 @@ import type { Item, Config } from './types.ts'
 import puppeteer from 'npm:puppeteer-core@23.10.4'
 import { tagsToUrl } from './utils.ts'
 
+/**
+ * Search for items on e-hentai.org
+ * @param config Configuration for the search
+ * @param config.searchItems Number of items to search (required)
+ * @param config.resultDist Absolute path of result (ends with .json) (required)
+ * @param config.errorDist Absolute path of error (ends with .json) (required)
+ * @param config.cookies cookies for authentication (optional, default [])
+ * @param config.baseTags Base tags (tags that are not banned) (optional, default [])
+ * @param config.extraTags Extra tags (tags that are banned) (optional, default [])
+ * @param config.exisitingItems Exsiting items, will be skipped (optional, default [])
+ * @param config.chromePath Executable path of the Chrome (optional, default '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')
+ * @param config.userAgent User agent for the browser (optional, default 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/
+ * @param config.viewPort View port for the browser (optional, default { width: 1200, height: 700 })
+ * @param config.stopOnDuplicate Stop searching when duplicate item found (optional, default false)
+ */
 export async function search({
   searchItems,
   resultDist,
@@ -15,7 +30,7 @@ export async function search({
   userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
   viewPort = { width: 1200, height: 700 },
   stopOnDuplicate = false,
-}: Config) {
+}: Config): Promise<void> {
   const url = tagsToUrl(baseTags)
   const browser = await puppeteer.launch({
     headless: false,

@@ -12,6 +12,7 @@ export type Item = {
   thumbnail: string
 }
 
+/** Configuration for the search */
 export type Config = {
   /** 
    * [Optional] Cookies for authentication
