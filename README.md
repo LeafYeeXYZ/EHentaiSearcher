@@ -2,7 +2,7 @@
 
 A tool to retrieve tags that are blocked by the `e-hentai`, based on `puppeteer`, written in `TypeScript`. For full configuration, see <https://jsr.io/@leaf/e-hentai/doc>.
 
-[![JSR Version](https://jsr.io/badges/@leaf/e-hentai)](https://jsr.io/@leaf/e-hentai) [![JSR Scope](https://jsr.io/badges/@psych)](https://jsr.io/@psych) [![JSR Score](https://jsr.io/badges/@leaf/e-hentai/score)](https://jsr.io/@leaf/e-hentai/score)
+[![JSR Version](https://jsr.io/badges/@leaf/e-hentai)](https://jsr.io/@leaf/e-hentai) [![JSR Scope](https://jsr.io/badges/@leaf)](https://jsr.io/@leaf) [![JSR Score](https://jsr.io/badges/@leaf/e-hentai/score)](https://jsr.io/@leaf/e-hentai/score)
 
 ```bash
 # 安装
