@@ -1,8 +1,19 @@
-一个用来检索被 `e-hentai` 官方屏蔽的 `tag` 的工具, 基于 `puppeteer`, 用 `TypeScript` 编写. 完整配置见 <https://jsr.io/@leaf/e-hentai/doc>.
+一个用来检索被 `e-hentai` 官方屏蔽的 `tag` 的工具, 基于 `puppeteer`, 用
+`TypeScript` 编写. 完整配置见 <https://jsr.io/@leaf/e-hentai/doc>.
 
-A tool to retrieve tags that are blocked by the `e-hentai`, based on `puppeteer`, written in `TypeScript`. For full configuration, see <https://jsr.io/@leaf/e-hentai/doc>.
+A tool to retrieve tags that are blocked by the `e-hentai`, based on
+`puppeteer`, written in `TypeScript`. For full configuration, see
+<https://jsr.io/@leaf/e-hentai/doc>.
 
-[![JSR Version](https://jsr.io/badges/@leaf/e-hentai)](https://jsr.io/@leaf/e-hentai) [![JSR Scope](https://jsr.io/badges/@leaf)](https://jsr.io/@leaf) [![JSR Score](https://jsr.io/badges/@leaf/e-hentai/score)](https://jsr.io/@leaf/e-hentai/score)
+[![JSR Version](https://jsr.io/badges/@leaf/e-hentai)](https://jsr.io/@leaf/e-hentai)
+[![JSR Scope](https://jsr.io/badges/@leaf)](https://jsr.io/@leaf)
+[![JSR Score](https://jsr.io/badges/@leaf/e-hentai/score)](https://jsr.io/@leaf/e-hentai/score)
+
+- `MacOS` 用户请提前安装 `Chrome` 浏览器, `Windows` 请手动指定 `chromePath`
+  (可以用自带的 `Edge` 浏览器).
+- `MacOS` users please install `Chrome` browser in advance, `Windows` users
+  please specify `chromePath` manually (you can use the built-in `Edge`
+  browser).
 
 ```bash
 # 安装
@@ -15,50 +26,64 @@ yarn dlx jsr add @leaf/e-hentai # if using yarn
 ```
 
 ```typescript
-import { search } from '@leaf/e-hentai'
+import { search } from '../lib/index.ts'
 import { resolve } from 'node:path'
 import { readFile } from 'node:fs/promises'
 
-// 普通用法
-// Normal usage
-await search({
-  searchItems: 1,
-  resultDist: resolve(import.meta.dirname!, 'result_1.json'),
-  errorDist: resolve(import.meta.dirname!, 'error_1.json'),
+// Search for 2 most recent items
+const a = await search(2)
+console.log(a.result)
+
+// Search for 2 most recent items with tags 'other:full color' and 'language:chinese'
+const b = await search(2, {
   baseTags: ['other:full color', 'language:chinese'],
 })
+console.log(b.result)
 
-// 用于搜索被屏蔽的标签
-// Use for search banned tags
-await search({
-  searchItems: 2,
-  resultDist: resolve(import.meta.dirname!, 'result_2.json'),
-  errorDist: resolve(import.meta.dirname!, 'error_2.json'),
-  baseTags: ['language:chinese'],
+// Search for 2 most recent items and save the result to result_1.json
+await search(2, { resultDist: resolve(import.meta.dirname!, 'result_1.json') })
+
+// Search for 2 most recent items with banned tag 'male:shotacon'
+// and provide existing items to skip
+// Save the result to result_2.json
+await search(2, {
   extraTags: ['male:shotacon'],
-  exisitingItems: JSON.parse(await readFile(resolve(import.meta.dirname!, 'result_1.json'), 'utf-8')),
+  // Note: The return result will contain the existing items with the new items
+  exisitingItems: JSON.parse(
+    await readFile(resolve(import.meta.dirname!, 'result_1.json'), 'utf-8'),
+  ),
+  resultDist: resolve(import.meta.dirname!, 'result_2.json'),
 })
 ```
-
-- 请在搜索完成后手动关闭**页面** (不是浏览器) (控制台会有提示).
-- Please manually close the **page** (not the browser) after the search is complete (you will get a notification in the console).
-- `MacOS` 用户请提前安装 `Chrome` 浏览器, `Windows` 请手动指定 `chromePath` (可以用自带的 `Edge` 浏览器).
-- `MacOS` users please install `Chrome` browser in advance, `Windows` users please specify `chromePath` manually (you can use the built-in `Edge` browser).
 
 ```json
 // 示例结果 (result_1.json)
 // Example result (result_1.json)
 [
   {
-    "title": "【佐藤ていぎ】異世界転生系即落ちシリーズ｜【男男菊花香个人汉化】【chinese】",
-    "url": "https://e-hentai.org/g/3157540/4738949e1a/",
+    "title": "[OHS (おーえいちえす)] スレイブ・セレナ [Digital]",
+    "url": "https://e-hentai.org/g/3158455/ea9393ae4d/",
     "tags": [
-      "language:chinese",
-      "language:translated",
-      "male:yaoi",
-      "other:full color"
+      "parody:original",
+      "female:nakadashi",
+      "female:rape",
+      "female:slave",
+      "male:bbm",
+      "male:dilf"
     ],
-    "thumbnail": "https://ehgt.org/w/01/677/73319-m4uhaf21.webp"
+    "thumbnail": "https://ehgt.org/w/01/275/57753-6vc5iik3.webp"
+  },
+  {
+    "title": "[JackOfBullets] The Giantess Next Door",
+    "url": "https://e-hentai.org/g/3158454/2c241c9f30/",
+    "tags": [
+      "language:english",
+      "female:giantess",
+      "male:snuff",
+      "artist:jackofbullets",
+      "other:3d"
+    ],
+    "thumbnail": "https://ehgt.org/w/01/678/69115-scnf2k04.webp"
   }
 ]
 ```

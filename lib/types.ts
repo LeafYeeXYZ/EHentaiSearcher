@@ -14,51 +14,59 @@ export type Item = {
 
 /** Configuration for the search */
 export type Config = {
-  /** 
+  /**
+   * [Optional] Whether to close the browser after the search
+   *
+   * @default 'true'
+   */
+  autoCloseBroswer?: boolean
+  /**
    * [Optional] Cookies for authentication
-   * 
-   * @default []
+   *
+   * @default '[]'
    */
   cookies?: Cookie[]
-  /** 
+  /**
    * Executable path of the Chrome
-   * 
+   *
    * @default '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
    */
   chromePath?: string
-  /** 
+  /**
    * Base tags (tags that are not banned)
-   * 
+   *
    * @default '[]'
    */
   baseTags?: string[]
-  /** 
+  /**
    * Extra tags (tags that are banned)
-   * 
+   *
    * @default '[]'
    */
   extraTags?: string[]
-  /** 
+  /**
    * Exsiting items, will be skipped
-   * 
+   *
    * @default '[]'
    */
   exisitingItems?: Item[]
-  /** 
+  /**
    * Absolute path of result (ends with .json)
+   * If not provided, the result will not be saved
    */
-  resultDist: string
-  /** 
+  resultDist?: string
+  /**
    * Absolute path of error (ends with .json)
+   * If not provided, the error will not be saved
    */
-  errorDist: string
-  /** 
+  errorDist?: string
+  /**
    * User agent for the browser
-   * 
+   *
    * @default 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
    */
   userAgent?: string
-  /** 
+  /**
    * Viewport of the browser
    * @default '{ width: 1200, height: 700 }'
    */
@@ -66,14 +74,10 @@ export type Config = {
     width: number
     height: number
   }
-  /** 
+  /**
    * Stop searching when duplicate items are found
-   * 
+   *
    * @default 'false'
    */
   stopOnDuplicate?: boolean
-  /** 
-   * Number of items to search
-   */
-  searchItems: number
 }
