@@ -26,7 +26,7 @@ yarn dlx jsr add @leaf/e-hentai # if using yarn
 ```
 
 ```typescript
-import { search } from '../lib/index.ts'
+import { search } from '@leaf/e-hentai'
 import { resolve } from 'node:path'
 import { readFile } from 'node:fs/promises'
 
