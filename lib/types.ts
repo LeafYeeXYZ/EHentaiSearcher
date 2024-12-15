@@ -15,13 +15,13 @@ export type Item = {
 /** Configuration for the search */
 export type Config = {
   /**
-   * [Optional] Whether to close the browser after the search
+   * Whether to close the browser after the search
    *
    * @default 'true'
    */
   autoCloseBroswer?: boolean
   /**
-   * [Optional] Cookies for authentication
+   * Cookies for authentication
    *
    * @default '[]'
    */

@@ -6,19 +6,23 @@ import type { Browser } from 'npm:puppeteer-core@23.10.4'
 
 /**
  * Search for items on e-hentai.org
+ * 
+ * | Config | Description | Default |
+ * | :---: | :---: | :---: |
+ * | resultDist | Absolute path of result (ends with .json) | undefined |
+ * | errorDist | Absolute path of error (ends with .json) | undefined |
+ * | cookies | Cookies for authentication | [] |
+ * | baseTags | Base tags (tags that are not banned) | [] |
+ * | extraTags | Extra tags (tags that are banned) | [] |
+ * | exisitingItems | Exsiting items, will be skipped | [] |
+ * | chromePath | Executable path of the Chrome | (Path to MacOS Chrome) |
+ * | userAgent | User agent for the browser | (Chrome 131 on MacOS) |
+ * | viewPort | View port for the browser | { width: 1200, height: 700 } |
+ * | stopOnDuplicate | Stop searching when duplicate item found | false |
+ * | autoCloseBroswer | Auto close browser after search | true |
+ * 
  * @param searchItems Number of items to search
- * @param config Configuration for the search
- * @param config.resultDist Absolute path of result (ends with .json) (optional)
- * @param config.errorDist Absolute path of error (ends with .json) (optional)
- * @param config.cookies cookies for authentication (optional, default [])
- * @param config.baseTags Base tags (tags that are not banned) (optional, default [])
- * @param config.extraTags Extra tags (tags that are banned) (optional, default [])
- * @param config.exisitingItems Exsiting items, will be skipped (optional, default [])
- * @param config.chromePath Executable path of the Chrome (optional, default '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')
- * @param config.userAgent User agent for the browser (optional, default 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/
- * @param config.viewPort View port for the browser (optional, default { width: 1200, height: 700 })
- * @param config.stopOnDuplicate Stop searching when duplicate item found (optional, default false)
- * @param config.autoCloseBroswer Auto close browser after search (optional, default true)
+ * @param config Configuration for the search (optional)
  */
 export async function search(searchItems: number, {
   resultDist,
