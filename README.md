@@ -1,9 +1,9 @@
-一个用来检索被 `e-hentai` 官方屏蔽的 `tag` 的工具, 基于 `puppeteer`, 用
-`TypeScript` 编写. 完整配置见 <https://jsr.io/@leaf/e-hentai/doc>.
-
-A tool to retrieve tags that are blocked by the `e-hentai`, based on
-`puppeteer`, written in `TypeScript`. For full configuration, see
+一个用来以编程的方式检索 `e-hentai` 指定 `tag` (包括一些被屏蔽的 `tag`)
+的内容的基础数据的工具, 基于 `puppeteer`, 用 `TypeScript` 编写. 完整配置见
 <https://jsr.io/@leaf/e-hentai/doc>.
+
+A tool for retrieving basic data of `e-hentai` content with specified `tag`
+(including some banned `tag`) programmatically,
 
 [![JSR Version](https://jsr.io/badges/@leaf/e-hentai)](https://jsr.io/@leaf/e-hentai)
 [![JSR Scope](https://jsr.io/badges/@leaf)](https://jsr.io/@leaf)

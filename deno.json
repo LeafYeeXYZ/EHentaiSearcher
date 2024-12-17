@@ -4,7 +4,7 @@
     "singleQuote": true
   },
   "name": "@leaf/e-hentai",
-  "version": "2024.12.17",
+  "version": "2024.12.18",
   "exports": "./lib/index.ts",
   "license": "GPL-3.0"
 }

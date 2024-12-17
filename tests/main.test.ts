@@ -18,7 +18,7 @@ await search(2, { resultDist: resolve(import.meta.dirname!, 'result_1.json') })
 // Search for 2 most recent items with banned tag 'male:shotacon'
 // and provide existing items to skip
 // Save the result to result_2.json
-await search(2, {
+await search(1, {
   extraTags: ['male:shotacon'],
   exisitingItems: JSON.parse(
     await readFile(resolve(import.meta.dirname!, 'result_1.json'), 'utf-8'),

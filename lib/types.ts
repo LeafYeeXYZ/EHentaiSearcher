@@ -15,6 +15,12 @@ export type Item = {
 /** Configuration for the search */
 export type Config = {
   /**
+   * Whether to use headless browser
+   *
+   * @default 'true'
+   */
+  headless?: boolean
+  /**
    * Whether to close the browser after the search
    *
    * @default 'true'

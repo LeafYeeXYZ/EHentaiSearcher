@@ -6,7 +6,7 @@ import type { Browser } from 'npm:puppeteer-core@23.10.4'
 
 /**
  * Search for items on e-hentai.org
- * 
+ *
  * | Config | Description | Default |
  * | :---: | :---: | :---: |
  * | resultDist | Absolute path of result (ends with .json) | undefined |
@@ -20,7 +20,8 @@ import type { Browser } from 'npm:puppeteer-core@23.10.4'
  * | viewPort | View port for the browser | { width: 1200, height: 700 } |
  * | stopOnDuplicate | Stop searching when duplicate item found | false |
  * | autoCloseBroswer | Auto close browser after search | true |
- * 
+ * | headless | Run browser in headless mode | true |
+ *
  * @param searchItems Number of items to search
  * @param config Configuration for the search (optional)
  */
@@ -37,6 +38,7 @@ export async function search(searchItems: number, {
   viewPort = { width: 1200, height: 700 },
   stopOnDuplicate = false,
   autoCloseBroswer = true,
+  headless = true,
 }: Config = {}): Promise<
   { result: Item[]; success: true } | {
     result: Item[]
@@ -48,7 +50,7 @@ export async function search(searchItems: number, {
   let browser: Browser | null = null
   try {
     browser = await puppeteer.launch({
-      headless: false,
+      headless,
       executablePath: chromePath,
       timeout: 0,
     })
