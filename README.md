@@ -3,7 +3,8 @@
 <https://jsr.io/@leaf/e-hentai/doc>.
 
 A tool for retrieving basic data of `e-hentai` content with specified `tag`
-(including some banned `tag`) programmatically,
+(including some banned `tag`) programmatically, based on `puppeteer`, 
+written in `TypeScript`. Full configuration see <https://jsr.io/@leaf/e-hentai/doc>.
 
 [![JSR Version](https://jsr.io/badges/@leaf/e-hentai)](https://jsr.io/@leaf/e-hentai)
 [![JSR Scope](https://jsr.io/badges/@leaf)](https://jsr.io/@leaf)
