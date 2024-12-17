@@ -21,6 +21,8 @@ import type { Browser } from 'npm:puppeteer-core@23.10.4'
  * | stopOnDuplicate | Stop searching when duplicate item found | false |
  * | autoCloseBroswer | Auto close browser after search | true |
  * | headless | Run browser in headless mode | true |
+ * 
+ * > **Note:** If `headless` is set to `true`, `autoCloseBroswer` will be ignored (always `true`)
  *
  * @param searchItems Number of items to search
  * @param config Configuration for the search (optional)
@@ -145,7 +147,7 @@ export async function search(searchItems: number, {
       console.log(`Results saved to ${resultDist}`)
     }
     // Close browser
-    if (!autoCloseBroswer) {
+    if (!autoCloseBroswer && !headless) {
       console.log('Waiting for the page to close...')
       while (true) {
         if (page.isClosed()) {
